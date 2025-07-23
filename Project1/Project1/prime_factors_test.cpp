@@ -1,14 +1,20 @@
 #include "gmock/gmock.h"
 #include "prime_factors.cpp"
-
-TEST(PrimeFactors, PrimeTest)
+using namespace testing;
+class PrimeFixture : public Test
 {
-	EXPECT_EQ(1, 1);
-}
-
-TEST(PrimeFactors, Of1)
-{
+public:
 	PrimeFactors prime_factor;
-	vector<int> expected = {};
+	vector<int> expected;
+};
+
+TEST_F(PrimeFixture, Of1)
+{
+	expected = {  };
 	EXPECT_EQ(expected, prime_factor.of(1));
+}
+TEST_F(PrimeFixture, Of2)
+{
+	expected = {2};
+	EXPECT_EQ(expected, prime_factor.of(2));
 }
